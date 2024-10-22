@@ -1,15 +1,27 @@
 import './App.css';
+import { useState } from 'react';
 
 const App = () => {
-  let counter = 0;
+  const [count, setCount] = useState(0);
+
+  const handleAdd = () => {
+    setCount(count + 1);
+    console.log(`Counter: ${count}`);
+  };
+
+  const handleSubtract = () => {
+    setCount(count - 1);
+    console.log(`Counter: ${count}`);
+  };
+
   return (
     <div className="App">
       <div className="box">
-        <p>{counter}</p>
-        <button className="add" onClick={() => counter++}>
+        <p>{count}</p>
+        <button className="add" onClick={handleAdd}>
           ADD
         </button>
-        <button className="sub" onClick={() => counter++}>
+        <button className="sub" onClick={handleSubtract}>
           SUB
         </button>
       </div>
