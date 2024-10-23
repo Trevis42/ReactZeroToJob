@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { TaskCard } from './TaskCard';
-import { BoxCard } from './BoxCard';
 import './TaskList.css';
 
 export const TaskList = () => {
@@ -17,20 +16,22 @@ export const TaskList = () => {
     setTasks(updatedTasks);
   };
 
-  const handleAddTask = (name, completed) => {
-    const newTask = { id: tasks.length + 1, name, completed };
+  const handleAddTask = (taskName, completed) => {
+    const newTask = { id: tasks.length + 1, taskName, completed };
     setTasks([...tasks, newTask]);
   };
 
   return (
     <section className="tasklist">
-      <h1>Task List</h1>
       <ul>
-        <button
-          className="trigger"
-          onClick={() => setShow(!show)}>
-          {show ? 'Hide' : 'Show'}
-        </button>
+        <div className="header">
+          <h1>TaskList</h1>
+          <button
+            className="trigger"
+            onClick={() => setShow(!show)}>
+            {show ? 'Hide Tasks' : 'Show Tasks'}
+          </button>
+        </div>
         {show &&
           tasks.map(({ id, taskName, completed }) => (
             <TaskCard
@@ -42,15 +43,6 @@ export const TaskList = () => {
             />
           ))}
       </ul>
-      <BoxCard result="success">
-        <p className="title">Offer notification</p>
-        <p className="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-      </BoxCard>
-
-      <BoxCard result="warning">
-        <p className="title">Cookie notification</p>
-        <p className="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus, nihil.</p>
-      </BoxCard>
     </section>
   );
 };
