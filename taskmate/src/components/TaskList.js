@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { TaskCard } from './TaskCard';
+import { BoxCard } from './BoxCard';
 
 export const TaskList = () => {
   const [tasks, setTasks] = useState([
-    { id: 1, name: 'React Training', completed: true },
-    { id: 2, name: 'Java Training', completed: false },
-    { id: 3, name: 'Python Training', completed: false },
+    { id: 1, taskName: 'React Training', completed: true },
+    { id: 2, taskName: 'Java Training', completed: false },
+    { id: 3, taskName: 'Python Training', completed: false },
   ]);
 
   const [show, setShow] = useState(true);
@@ -23,22 +25,26 @@ export const TaskList = () => {
     <>
       <h1>Task List</h1>
       <ul>
-        <button className="trigger" onClick={() => setShow(!show)}>
+        <button
+          className="trigger"
+          onClick={() => setShow(!show)}>
           Toggle
         </button>
         {show &&
-          tasks.map(({ id, name, completed }) => (
-            <li key={id} className={completed ? 'completed' : 'incomplete'}>
-              {/* <input type="checkbox" checked={completed} /> */}
-              <span>
-                {id} - {name}
-              </span>
-              <button onClick={() => handleDelete(id)} className="delete">
-                Delete
-              </button>
-            </li>
+          tasks.map(({ id, taskName, completed }) => (
+            <TaskCard
+              key={id}
+              id={id}
+              taskName={taskName}
+              completed={completed}
+              handleDelete={handleDelete}
+            />
           ))}
       </ul>
+      <BoxCard result="success">
+        <p className="title">Lorem ipsum dolor sit amet.</p>
+        <p className="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, similique!</p>
+      </BoxCard>
     </>
   );
 };
