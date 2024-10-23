@@ -1,8 +1,9 @@
+import './TaskCard.css';
+
 export const TaskCard = ({ id, taskName, completed, handleDelete }) => {
   return (
-    <>
+    <div className="taskcard">
       <li className={completed ? 'completed' : 'incomplete'}>
-        {/* <input type="checkbox" checked={completed} /> */}
         <span>
           {id} - {taskName}
         </span>
@@ -12,6 +13,6 @@ export const TaskCard = ({ id, taskName, completed, handleDelete }) => {
           Delete
         </button>
       </li>
-    </>
+    </div>
   );
 };
