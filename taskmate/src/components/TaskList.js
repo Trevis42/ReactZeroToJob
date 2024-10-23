@@ -4,9 +4,9 @@ import './TaskList.css';
 
 export const TaskList = () => {
   const [tasks, setTasks] = useState([
-    { id: 1, taskName: 'React Training', completed: true },
-    { id: 2, taskName: 'Java Training', completed: false },
-    { id: 3, taskName: 'Python Training', completed: false },
+    { id: 1000, taskName: 'React Training', completed: true },
+    { id: 2345, taskName: 'Java Training', completed: false },
+    { id: 3957, taskName: 'Python Training', completed: false },
   ]);
 
   const [show, setShow] = useState(true);
