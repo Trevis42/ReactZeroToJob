@@ -1,39 +1,47 @@
+/** @format */
+
 import './App.css';
 import { useState } from 'react';
 
 const App = () => {
-  const [count, setCount] = useState(0);
+  const [tasks, setTasks] = useState([
+    { id: 1, name: 'React Training', completed: true },
+    { id: 2, name: 'Java Training', completed: false },
+    { id: 3, name: 'Python Training', completed: false },
+  ]);
 
-  const handleAdd = () => {
-    setCount(count => count + 1);
-    setCount(count => count + 1);
-    setCount(count => count + 1);
-    console.log(`Count: ${count}`);
+  const [show, setShow] = useState(true);
+
+  const handleDelete = id => {
+    const updatedTasks = tasks.filter(task => task.id !== id);
+    setTasks(updatedTasks);
   };
 
-  const handleSubtract = () => {
-    setCount(count - 1);
-    console.log(`Count: ${count}`);
-  };
-
-  const handleReset = () => {
-    setCount(0);
+  const handleAddTask = (name, completed) => {
+    const newTask = { id: tasks.length + 1, name, completed };
+    setTasks([...tasks, newTask]);
   };
 
   return (
     <div className="App">
-      <div className="box">
-        <p>{count}</p>
-        <button onClick={handleAdd} className="add">
-          ADD
+      <h1>Task List</h1>
+      <ul>
+        <button className="trigger" onClick={() => setShow(!show)}>
+          Toggle
         </button>
-        <button onClick={handleSubtract} className="sub">
-          SUB
-        </button>
-        <button onClick={handleReset} className="reset">
-          RESET
-        </button>
-      </div>
+        {show &&
+          tasks.map(({ id, name, completed }) => (
+            <li key={id} className={completed ? 'completed' : 'incomplete'}>
+              {/* <input type="checkbox" checked={completed} /> */}
+              <span>
+                {id} - {name}
+              </span>
+              <button onClick={() => handleDelete(id)} className="delete">
+                Delete
+              </button>
+            </li>
+          ))}
+      </ul>
     </div>
   );
 };
