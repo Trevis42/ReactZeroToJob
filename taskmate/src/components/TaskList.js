@@ -29,7 +29,7 @@ export const TaskList = () => {
         <button
           className="trigger"
           onClick={() => setShow(!show)}>
-          Toggle
+          {show ? 'Hide' : 'Show'}
         </button>
         {show &&
           tasks.map(({ id, taskName, completed }) => (
