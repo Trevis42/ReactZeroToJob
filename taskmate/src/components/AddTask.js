@@ -21,7 +21,6 @@ export const AddTask = () => {
       name: taskValue,
       completed: Boolean(progress),
     };
-    console.log('Task added:', task);
     handleReset();
   };
 
