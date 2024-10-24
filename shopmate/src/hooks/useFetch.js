@@ -7,9 +7,11 @@ export const useFetch = url => {
 
   useEffect(() => {
     const fetchData = async () => {
+      const abortController = new AbortController();
+
       setLoading(true);
       try {
-        const response = await fetch(url);
+        const response = await fetch(url, { signal: abortController.signal });
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -24,6 +26,8 @@ export const useFetch = url => {
       }
     };
     fetchData();
+
+    return () => abortController.abort();
   }, [url]);
 
   return { data, loading, error };
