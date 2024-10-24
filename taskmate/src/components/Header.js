@@ -1,5 +1,4 @@
-// import Logo from '../assets/logo-color.svg';
-import Logo from '../assets/cat_1280.jpg';
+import Logo from '../assets/logo.png';
 import './Header.css';
 
 export const Header = () => {

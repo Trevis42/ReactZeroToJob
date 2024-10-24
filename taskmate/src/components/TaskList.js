@@ -2,23 +2,12 @@ import { useState } from 'react';
 import { TaskCard } from './TaskCard';
 import './TaskList.css';
 
-export const TaskList = () => {
-  const [tasks, setTasks] = useState([
-    { id: 1000, taskName: 'React Training', completed: true },
-    { id: 2345, taskName: 'Java Training', completed: false },
-    { id: 3957, taskName: 'Python Training', completed: false },
-  ]);
-
+export const TaskList = ({ tasks, setTasks }) => {
   const [show, setShow] = useState(true);
 
   const handleDelete = id => {
     const updatedTasks = tasks.filter(task => task.id !== id);
     setTasks(updatedTasks);
-  };
-
-  const handleAddTask = (taskName, completed) => {
-    const newTask = { id: tasks.length + 1, taskName, completed };
-    setTasks([...tasks, newTask]);
   };
 
   return (
