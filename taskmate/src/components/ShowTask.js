@@ -1,4 +1,3 @@
-import { createRef } from 'react';
 export const ShowTask = ({ tasklist, setTasklist, task, setTask, editInputFocus, setEditInputFocus }) => {
   const handleEdit = id => {
     const selectedTask = tasklist.find(task => task.id === id);
