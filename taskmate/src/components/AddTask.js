@@ -1,10 +1,14 @@
-import { useRef } from 'react';
-export const AddTask = ({ tasklist, setTasklist, task, setTask, editInputFocus }) => {
+import { useRef, useEffect } from 'react';
+export const AddTask = ({ tasklist, setTasklist, task, setTask }) => {
   const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (tasklist || task.id) inputRef.current.focus();
+  }, [task.id, tasklist]);
 
   const handleSubmit = e => {
     e.preventDefault();
-    inputRef.current.focus();
+    // inputRef.current.focus();
     if (task.id) editTask(e);
     else addTask(e);
   };
@@ -46,7 +50,7 @@ export const AddTask = ({ tasklist, setTasklist, task, setTask, editInputFocus }
         <input
           type="text"
           name="task"
-          ref={inputRef || editInputFocus}
+          ref={inputRef}
           value={task.name || ''}
           autoComplete="off"
           placeholder="Add a task..."
