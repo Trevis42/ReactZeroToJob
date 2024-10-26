@@ -6,6 +6,7 @@ import './App.css';
 
 function App() {
   const [tasklist, setTasklist] = useState([]);
+  const [task, setTask] = useState({});
 
   return (
     <div className="App">
@@ -14,10 +15,14 @@ function App() {
       <AddTask
         tasklist={tasklist}
         setTasklist={setTasklist}
+        task={task}
+        setTask={setTask}
       />
       <ShowTask
         tasklist={tasklist}
         setTasklist={setTasklist}
+        task={task}
+        setTask={setTask}
       />
     </div>
   );

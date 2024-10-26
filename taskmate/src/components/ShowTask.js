@@ -1,4 +1,15 @@
-export const ShowTask = ({ tasklist, setTasklist }) => {
+import { createRef } from 'react';
+export const ShowTask = ({ tasklist, setTasklist, task, setTask, editInputFocus, setEditInputFocus }) => {
+  const handleEdit = id => {
+    const selectedTask = tasklist.find(task => task.id === id);
+    setTask(selectedTask);
+  };
+
+  const handleDelete = id => {
+    const updatedTaskList = tasklist.filter(task => task.id !== id);
+    setTasklist(updatedTaskList);
+  };
+
   return (
     <section className="showTask">
       <div className="head">
@@ -7,8 +18,8 @@ export const ShowTask = ({ tasklist, setTasklist }) => {
           <span className="count">{tasklist.length}</span>
         </div>
         <button
-          className="clearAll"
           onClick={() => setTasklist([])}
+          className="clearAll"
         >
           Clear All
         </button>
@@ -20,8 +31,14 @@ export const ShowTask = ({ tasklist, setTasklist }) => {
               <span className="name">{task.name}</span>
               <span className="time">{task.time}</span>
             </p>
-            <i className="bi bi-pencil-square"></i>
-            <i className="bi bi-trash"></i>
+            <i
+              onClick={() => handleEdit(task.id)}
+              className="bi bi-pencil-square"
+            ></i>
+            <i
+              onClick={() => handleDelete(task.id)}
+              className="bi bi-trash"
+            ></i>
           </li>
         ))}
       </ul>
