@@ -3,7 +3,7 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        purple: '#540081',
+        purple: '#8200aa',
         rawr: {
           100: '#d5fefe',
           200: '#abfdfd',
