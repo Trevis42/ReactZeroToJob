@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+  lang="en"
+  class="dark"
+>
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -20,13 +23,19 @@
       rel="stylesheet"
       href="./style.css"
     />
-
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="./index.js"></script>
+    <script src="tailwind.config.js"></script>
   </head>
   <body>
-    <h1>Learning TailWind</h1>
-    <p>Hello</p>
-    <p>Learning <span class="text-4xl">TailWind</span> will be intersting!</p>
+    <h1
+      class="text-5xl bg-amber-500 hover:bg-red-500 hover:text-white hover:cursor-pointer text-center py-7 m-4 border-4 rounded-md border-indigo-700"
+    >
+      Learning TailWind
+    </h1>
+    <p class="text-2xl bg-sky-400 md:bg-sky-700 lg:bg-red-500 p-2 m-2">Hello World</p>
+    <p class="bg-sky-200 dark:bg-sky-900">
+      Learning <span class="text-3xl text-sky-900 dark:text-sky-300">TailWind</span> will be intersting!
+    </p>
   </body>
 </html>
